@@ -1,6 +1,7 @@
 html {
 	font-size: 10px;
-	background: url(files/stars.jpg) no-repeat;
+	background: url(files/stars.jpg) no-repeat ;
+	background-size: 100%;
 }
 body,html {
   margin: 0;
