@@ -59,6 +59,10 @@ body {
 	font-size: 2em;
 }
 
+.pannel p:nth-child(2){
+	font-size: 4em;
+}
+
 .pannel.open {
 	font-size: 40px;
 }
