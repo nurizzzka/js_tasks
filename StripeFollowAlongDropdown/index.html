@@ -6,5 +6,114 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+	<h1>NeoBis</h1>
+	<nav class="top">
+		<div class="dropdownBackground">
+			<span class="arrow"></span>
+		</div>
+		<ul class="cool">
+			<li>
+				<a href="#">About me</a>
+				<div class="dropdown dropdown1">
+					<div class="bio">
+						<img src="lorem.jpg">
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo, quibusdam cupiditate minus officia amet.</p>
+					</div>
+				</div>
+			</li>
+			<li>
+			<a href="#">Courses</a>
+			<ul class="dropdown courses">
+				<li>
+					<span class="code">RFB</span>
+					<a href="#">Lorem ipsum dolor sit.</a>
+				</li>
+				<li>
+					<span class="code">ES6</span>
+					<a href="#">ES6 for everyone</a>
+				</li>
+				<li>
+					<span class="code">WTF</span>
+					<a href="#">What's the Flexbox</a>
+				</li>
+				<li>
+					<span class="code">GRID</span>
+					<a href="#">CSS Grid</a>
+				</li>
+				<li>
+					<span class="code">STPU</span>
+					<a href="#">Sublime Text power USER</a>
+				</li>
+				<li>
+					<span class="code">LRX</span>
+					<a href="#">Learn redux</a>
+				</li>
+				<li>
+					<span class="code">CLPU</span>
+					<a href="#">COmmand line power user</a>
+				</li>
+				<li>
+					<span class="code">MMD</span>
+					<a href="#">Mastering markdown</a>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">Other links</a>
+			<ul class="dropdown dropdown3">
+				<li>
+					<a href="#" class="button">Twitter</a>
+				</li>
+				<li>
+					<a href="#" class="button">Facebook</a>
+				</li>
+				<li>
+					<a href="#" class="button">Blog</a>
+				</li>
+				<li>
+					<a href="#" class="button">Course Catalog</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</nav>
+<script>
+	const triggers = document.querySelectorAll('.cool > li');
+	const background = document.querySelector('.dropdownBackground');
+	const nav = document.querySelector('.top');
+
+	function handleEnter() {
+		this.classList.add('trigger-enter');
+		setTimeout(() => this.classList.contains('trigger-enter') && this.classList.add('trigger-enter-active'), 150);
+		background.classList.add('open');
+
+		const dropdown = this.querySelector('.dropdown');
+		const dropdownCoords = dropdown.getBoundingClientRect();
+		const navCoords = nav.getBoundingClientRect();
+		
+
+		const coords = {
+			height: dropdownCoords.height,
+			width: dropdownCoords.width,
+			top: dropdownCoords.top - navCoords.top,
+			left: dropdownCoords.left - navCoords.left,
+		};
+
+		background.style.setProperty('width', `${coords.width}px`);
+		background.style.setProperty('height', `${coords.height}px`);
+		background.style.setProperty('transform', `translate(${coords.left}px, ${coords.top}px)`);
+
+	}
+
+	function handleLeave() {
+		this.classList.remove('trigger-enter', 'trigger-enter-active');
+		background.classList.remove('open');
+
+	}
+
+	triggers.forEach(trigger => trigger.addEventListener('mouseenter', handleEnter));
+	triggers.forEach(trigger => trigger.addEventListener('mouseleave', handleLeave));
+
+</script>
 </body>
 </html>    
